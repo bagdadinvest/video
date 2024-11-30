@@ -1,0 +1,17 @@
+{% extends "video_downloader/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h2>Download Your Videos</h2>
+<form method="POST" action="{% url 'video_downloader:download_video' %}">
+    {% csrf_token %}
+    <label for="url">Video URL:</label>
+    <input type="url" id="url" name="url" required>
+    <button type="submit">Download</button>
+</form>
+{% if message %}
+    <p>{{ message }}</p>
+{% endif %}
+{% endblock %}
+
